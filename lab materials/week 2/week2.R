@@ -59,7 +59,7 @@ Y <- sample(x = 1:10, size = 18, replace = TRUE)
 Z <- sample(x = 0:1, size = 18, replace = TRUE)
 block <- c(rep(1, 4), rep(2, 6), rep(3, 8))
 
-perms <- genperms(Z, blockvar = block) # enumerate all possible permutations given assignment vector (permutation matrix)
+perms <- genperms(Z, blockvar = block) # enumerate all possible combinations given assignment vector (permutation matrix)
 probs <- genprobexact(Z, blockvar = block) # compute probability of treatment per block
 ate <- estate(Y, Z, prob = probs) # estimate observed ATE
 
@@ -96,9 +96,9 @@ lm(Y ~ d)
 Z <- d
 probs <- genprobexact(Z)
 ate <- estate(Y, Z, prob = probs)
-  
+ 
 perms <- genperms(Z, maxiter = 10000)
-
+ 
 # Create potential outcomes UNDER THE SHARP NULL OF NO EFFECT FOR ANY UNIT
 Ys <- genouts(Y, Z, ate = 0)
   
@@ -123,7 +123,7 @@ dispdist(distout, ate)               # display p-values, 95% confidence interval
 
 ## experiment data
 
-dat <- read.csv("young19.csv")
+dat <- read.csv("~/GitHub/experimental_methods2020/lab materials/week 2/young19.csv")
 
 ## create subset of actual wristband days
 
@@ -202,7 +202,7 @@ library(Formula) # Created using version 1.2-1
 # The RI procedure generates 1000 permutations of the treatment assignment vector (ie. 1000 potential weather assignments ) for each specification and then calculates the ATE.
 
 # Load Data --------
-load("cooperman17.Rdata") 
+load("~/GitHub/experimental_methods2020/lab materials/week 2/cooperman17.Rdata") 
 
 # Subset data to drop 7 counties in Gomez et al. (2007) dataset that do not have out-of-sample rainfall data
 data2 <- dataset[!is.na(dataset$Rainfall12), ]
